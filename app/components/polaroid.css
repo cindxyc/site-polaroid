@@ -1,11 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap');
 
-.polaroid-gallery {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-}
-
 .polaroid {
   position: absolute;
   width: 500px;

@@ -30,7 +30,7 @@ export default function PolaroidGallery() {
     }
   ]);
 
-  const sendToBack = (targetId) => {
+  const sendToBack = (targetId: number) => {
     setPolaroids(prevPolaroids => {
       return prevPolaroids.map(polaroid => {
         if (polaroid.id === targetId) {
