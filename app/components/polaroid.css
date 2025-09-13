@@ -1,11 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap');
 
+.polaroid-gallery {
+  position: flex;
+}
+
 .polaroid {
   position: absolute;
   width: 500px;
   height: 650px;
-  margin-left: 1000px;
-  margin-top: 180px;
   display: flex;
   align-items: center;
   justify-content: center;
