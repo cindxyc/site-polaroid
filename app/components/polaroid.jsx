@@ -3,7 +3,7 @@ import { motion, useMotionValue, useTransform } from 'framer-motion';
 import { useState } from 'react';
 
 export default function PolaroidGallery() {
-  const polaroids = [
+  const [polaroids, setPolaroids] = useState([
     { id: 1,
       image: "/gray-frame.svg",
       caption: "Caption for Photo 1",
@@ -28,7 +28,27 @@ export default function PolaroidGallery() {
       rotation: -2,
       position: { top: 15, left: -10, zIndex: 1 }
     }
-  ];
+  ]);
+
+  const sendToBack = (targetId) => {
+    setPolaroids(prevPolaroids => {
+      return prevPolaroids.map(polaroid => {
+        if (polaroid.id === targetId) {
+          // Set the target polaroid to the back (zIndex: 0)
+          return {
+            ...polaroid,
+            position: { ...polaroid.position, zIndex: 0 }
+          };
+        } else {
+          // Increase all other polaroids' z-index by 1
+          return {
+            ...polaroid,
+            position: { ...polaroid.position, zIndex: polaroid.position.zIndex + 1 }
+          };
+        }
+      });
+    });
+  };
 
   return (
     <div className="polaroid-gallery">
@@ -44,11 +64,12 @@ export default function PolaroidGallery() {
             zIndex: polaroid.position.zIndex
           }}
           drag
-          dragSnapToOrigin={true}
-          dragTransition={{ bounceStiffness: 100, bounceDamping: 20 }}
           dragElastic={0.3}
+          dragSnapToOrigin={true}
+          onDragEnd={() => sendToBack(polaroid.id)}
+          onTap={() => sendToBack(polaroid.id)}
           whileTap={{ cursor: "grabbing" }}
-          >
+        >
           {/* white polaroid frame */}
           <img src={"/blank-polaroid.svg"} alt="polaroid frame" className="polaroid-frame" draggable="false" />
           {/* container for both texts and photo */}
