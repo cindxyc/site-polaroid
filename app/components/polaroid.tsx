@@ -14,7 +14,7 @@ export default function PolaroidGallery() {
       image: "/gray-frame.svg",
       caption: "Caption for Photo 2",
       rotation: -10,
-      position: { top: 20, left: -10, zIndex: 3 },
+      position: { top: 15, left: -10, zIndex: 3 },
     },
     { id: 3,
       image: "/gray-frame.svg",
@@ -71,14 +71,14 @@ export default function PolaroidGallery() {
           whileTap={{ cursor: "grabbing" }}
         >
           {/* white polaroid frame */}
-          <img src={"/blank-polaroid.svg"} alt="polaroid frame" className="polaroid-frame" draggable="false" />
-          {/* container for both texts and photo */}
-          <div className="photo-container">
-            <img src={"/gray-frame.svg"} alt="polaroid photo" className="photo" draggable="false" />
-            {/* container for texts */}
+          <div className="polaroid-container">
+            <img src={"/blank-polaroid.svg"} alt="polaroid frame" className="polaroid-frame" draggable="false" />
+            <div className="photo-container">
+              <img src={"/gray-frame.svg"} alt="polaroid photo" className="photo" draggable="false" />
+            </div>
             <div className="text-container">
               <div className="caption">{polaroid.caption}</div>
-              <div className="watermark">UofTHacks 13</div>
+              <div className="watermark">UofTHacks</div>
             </div>
           </div>
         </motion.div>

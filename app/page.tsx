@@ -19,9 +19,9 @@ export default function Home() {
         </div>
 
         {/* Right side with bookmark and polaroid gallery and avatar selector overlay */}
-        <div className="w-4/10 relative flex justify-center items-start">
+        <div className="w-5/10 relative flex justify-center items-start">
           {/* Bookmark image as a full-height vertical rectangle */}
-          <div className="relative w-full h-full">
+          <div className="relative w-full h-full right-10">
             <Image
               src="/bookmark-art.svg"
               alt="bookmark"
@@ -30,7 +30,9 @@ export default function Home() {
               className="w-full h-auto min-h-[90vh]"
               style={{ objectFit: "cover", objectPosition: "center" }}
             />
-            <div className="absolute top-[10%]">
+
+            {/* Polaroid Gallery overlay positioned in the upper part of the bookmark */}
+            <div className="absolute top-[10%] left-0 right-0 flex justify-center items-center">
               <PolaroidGallery />
             </div>
           </div>
